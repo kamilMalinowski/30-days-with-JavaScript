@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="shortcut icon"
+      href="https://www.kamil--m.com/education/30js-challenge/img/30-js.jpg"
+      type="image/x-icon"
+    />
+    <title>JS + CSS Clock</title>
+    <style>
+      html {
+        font-family: "helvetica neue";
+        text-align: center;
+        font-size: 10px;
+      }
+
+      body {
+        background-image: url("https://unsplash.it/1500/1000?image=500");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: 0 auto;
+        font-size: 2rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        height: 100vh;
+        width: 100%;
+        align-items: center;
+      }
+
+      .clock {
+        width: 30rem;
+        height: 30rem;
+        border: 6px solid white;
+        border-radius: 50%;
+        margin: 50px auto;
+        position: relative;
+        padding: 2rem;
+        background-color: rgba(255, 255, 255, 0.2);
+        background-image: url("https://www.kamil--m.com/education/30js-challenge/day/2/clock.png");
+        background-position: center;
+        background-size: cover;
+      }
+
+      .clock-face {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform: translateX(3px) rotate(90deg);
+      }
+
+      .hand {
+        height: 4px;
+        border-radius: 6px;
+        width: 50%;
+        background-color: rgba(0, 128, 0, 0.9);
+        position: absolute;
+        top: 50%;
+        transform-origin: 100%;
+      }
+
+      .min-hand {
+        background-color: rgb(144, 65, 65, 0.9);
+      }
+      .second-hand {
+        background-color: rgb(32, 73, 149, 0.9);
+      }
+
+      .clock2 {
+        border: 6px black solid;
+        display: flex;
+        align-items: center;
+        background-color: white;
+        padding: 0 2rem;
+        border-radius: 10px;
+        gap: 1rem;
+        margin: 0;
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clock">
+      <div class="clock-face">
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand second-hand"></div>
+      </div>
+    </div>
+
+    <div class="clock2"></div>
+    <script>
+      setInterval(() => {
+        const clock = document.querySelector(".clock2");
+        const date = new Date();
+        const hours = String(date.getHours()).padStart(2, 0);
+        const minutes = String(date.getMinutes()).padStart(2, 0);
+        const seconds = String(date.getSeconds()).padStart(2, 0);
+
+        clock.innerHTML = `<p>${hours}</p>:<p>${minutes}</p>:<p>${seconds}</p>`;
+      }, 1000);
+
+      // min = 6 deg / 60
+      // hour = 30 deg / 360
+
+      function setTime(hand, option, value) {
+        setInterval(() => {
+          const data = new Date();
+          const getTime = [
+            data.getSeconds(),
+            data.getMinutes(),
+            data.getHours(),
+          ];
+          document.querySelector(`.${hand}`).style["transform"] = `rotate(${getTime[value] * option}deg)`;
+        }, 1000);
+      }
+      setTime("second-hand", 6, 0);
+      setTime("min-hand", 6, 1);
+      setTime("hour-hand", 30, 2);
+
+      // extra code
+      const body = document.querySelector("body");
+      const getRandomNum = (min, max) => Math.floor(Math.random() * (max - min) + min);
+
+      function randomBackground() {
+        setInterval(() => {
+          const random = getRandomNum(100, 999);
+          body.style.backgroundImage = `url(https://unsplash.it/1500/1000?image=${random})`;
+        }, 60000);
+      }
+
+      randomBackground();
+    </script>
+  </body>
+</html>
