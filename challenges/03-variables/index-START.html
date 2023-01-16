@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Scoped CSS Variables and JS</title>
+    <link
+      rel="shortcut icon"
+      href="https://www.kamil--m.com/education/30js-challenge/img/30-js.jpg"
+      type="image/x-icon"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --base: #ffc600;
+        --spacing: 10px;
+        --blur: 10px;
+      }
+
+      body {
+        text-align: left;
+        background-image: linear-gradient(45deg, #ffc600, #c300ff);
+        color: #1f0029;
+        font-family: "Rubik Glitch", cursive;
+        font-size: 20px;
+      }
+
+      main {
+        padding: 30px;
+        max-width: 768px;
+        margin: 0 auto;
+      }
+
+      .controls {
+        grid-template-columns: 1fr;
+        margin-bottom: 50px;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        grid-gap: 10px;
+      }
+
+      input {
+        width: 100%;
+        border-radius: 4px;
+      }
+
+      img {
+        padding: var(--spacing);
+        filter: blur(var(--blur));
+        background-color: var(--base);
+
+        width: 100%;
+        border-radius: 4px;
+      }
+
+      label {
+        width: 100%;
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h2>Update CSS Variables with <span class="hl">JS</span></h2>
+
+      <div class="controls">
+        <div class="wrapper">
+          <label for="spacing">Spacing:</label>
+          <input
+            id="spacing"
+            type="range"
+            name="spacing"
+            min="10"
+            max="200"
+            value="10"
+            data-sizing="px"
+          />
+        </div>
+
+        <div class="wrapper">
+          <label for="blur">Blur:</label>
+          <input
+            id="blur"
+            type="range"
+            name="blur"
+            min="0"
+            max="25"
+            value="10"
+            data-sizing="px"
+          />
+        </div>
+
+        <div class="wrapper">
+          <label for="base">Base Color</label>
+          <input id="base" type="color" name="base" value="#ffc600" />
+        </div>
+      </div>
+
+      <img
+        alt="My face"
+        src="https://www.kamil--m.com/education/30js-challenge/img/challenge-30.jpg"
+      />
+    </main>
+
+    <script>
+      const inputs = document.querySelectorAll("input");
+
+      function switchVariables() {
+        const dataSetValue = this.dataset.sizing || "";
+        document.documentElement.style.setProperty(`--${this.name}`, this.value + dataSetValue);
+      }
+
+      inputs.forEach((input) => input.addEventListener("change", switchVariables));
+      inputs.forEach((input) => input.addEventListener("mousemove", switchVariables));
+    </script>
+  </body>
+</html>
