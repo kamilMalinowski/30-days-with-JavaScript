@@ -13,7 +13,7 @@ body {
       rgba(201, 232, 255, 0.235),
       rgba(0, 0, 0, 0.77)
     ),
-    url("./30-bg.jpg") bottom center;
+    url("img/30-bg.jpg") bottom center;
   background-size: cover;
   color: #c9e8ff;
   text-align: center;
