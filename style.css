@@ -25,8 +25,15 @@ h2,
 h3 {
   font-family: "Permanent Marker", cursive;
   color: #ffc600;
-  text-shadow: 0 0 4px #ffc600;
+  letter-spacing: 0.3rem;
 }
+
+h3 {
+  font-size: 20px;
+  color: #ffc600;
+  padding-bottom: 50px;
+}
+
 @media screen and (min-width: 768px) {
   h1 {
     font-size: 50px;
@@ -35,6 +42,24 @@ h3 {
   h2 {
     font-size: 30px;
   }
+
+
+  h3 {
+    font-size: 50px;
+  }
+}
+
+
+
+.day{
+  white-space: nowrap;
+}
+
+.poorly {
+  color: #ff0000;
+}
+.great {
+  color: #00ff04;
 }
 
 p {
@@ -98,9 +123,14 @@ a:hover {
 }
 a:hover > img {
   transform: scale(0.9);
+  opacity: 0.3;
+}
+a:hover > span {
+  opacity: 1;
 }
 
-span {
+a span {
+  opacity: 0;
   text-shadow: 0 0 4px #000000;
   font-size: 20px;
   color: #ffc600;
