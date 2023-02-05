@@ -30,36 +30,21 @@ const challenges = [
   "Countdown Timer",
   "Whack A Mole",
 ];
-const num = 3;
-const showDay = document.querySelector(".day");
+const num = 10;
 
-const date = new Date();
-const day = date.getDate();
+document.querySelector(".done").innerHTML = num + 1;
 
-console.log(day);
-const daysOfChallenge = day - 11;
-
-function checkProgress() {
-  if (daysOfChallenge > num + 1) {
-    showDay.classList.add("poorly");
-  } else {
-    showDay.classList.add("great");
-  }
-}
-checkProgress();
-showDay.innerHTML = `${num + 1} / ${daysOfChallenge}`;
 const list = document.querySelector("ul");
 
 for (let i = 0; i < challenges.length; i++) {
   const html = `
         <!-- challenge ${i + 1} -->
-        <li>
+        <li class="${i <= num ? "" : "disabled"}">
             <a
-                class="${i <= num ? "" : "disabled"}"
-                href="https://www.kamil--m.com/education/30js-challenge/day/${i + 1}">
+                href="challenges/${ i + 1}">
                     <span>${challenges[i]} <br>(Day ${i + 1})</span>
                     <img 
-                        src="https://www.kamil--m.com/education/30js-challenge/img/challenge-${i <= num ? i + 1 : 30}.jpg"
+                        src="img/challenge-${i <= num ? i + 1 : 30}.jpg"
                         alt="challenge-${i + 1}"
                     >
             </a>
