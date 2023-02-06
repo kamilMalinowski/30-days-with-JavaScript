@@ -1,13 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
- <link rel="shortcut icon" href="https://kamilmalinowski.github.io/30-day-vanilla-js-coding-challenge/img/30-js.jpg" type="image/x-icon" />
-  <title>Key Detection</title>
-  <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
-</head>
-<body>
-<script>
-</script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="shortcut icon"
+      href="https://kamilmalinowski.github.io/30-day-vanilla-js-coding-challenge/img/30-js.jpg"
+      type="image/x-icon"
+    />
+    <title>Key Detection</title>
+    <style>
+      body {
+        display: grid;
+        place-content: center;
+        min-height: 90vh;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas
+      width="3072"
+      height="1428"
+      style="
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: calc(100%);
+        height: calc(100%);
+        margin: 0px;
+        padding: 0px;
+        z-index: 999999999;
+        pointer-events: none;
+      "
+    ></canvas>
+    <p class="super">
+      Write special key: <span class="super__key">______</span>
+    </p>
+    <script src="confetti.min.js"></script>
+    <script>
+      const password = [];
+      const ray = "rayman";
+
+      function random(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      const superKeys = document.querySelector(".super__key");
+      const body = document.querySelector("body");
+      window.addEventListener("keyup", (e) => {
+        password.push(e.key);
+        password.splice(-ray.length - 1, password.length - ray.length);
+        if (password.join("").includes(ray)) {
+          body.style.backgroundColor = `rgb(${random(40,90)},${random(40,90)},${random(40,90)})`;
+        }
+        superKeys.innerHTML = password.join("");
+      });
+    </script>
+  </body>
 </html>
