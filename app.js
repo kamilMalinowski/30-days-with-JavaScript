@@ -30,7 +30,7 @@ const challenges = [
   "Countdown Timer",
   "Whack A Mole",
 ];
-const num = 12;
+const num = 13;
 
 document.querySelector(".done").innerHTML = num + 1;
 
