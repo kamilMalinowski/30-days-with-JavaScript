@@ -1,3 +1,3 @@
-![image](https://user-images.githubusercontent.com/64846552/211958887-9e9f12fa-c536-4b05-a135-464ec6c23d34.png)
+![image](https://user-images.githubusercontent.com/64846552/226470450-a6cf9aef-8eaf-4529-89d1-ad44afa4c55a.png)
 
 <p align="center">https://javascript30.com/</p>
