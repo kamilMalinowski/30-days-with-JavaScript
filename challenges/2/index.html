@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="shortcut icon" href="https://kamilmalinowski.github.io/30-day-vanilla-js-coding-challenge/img/30-js.jpg" type="image/x-icon" />
+    <link rel="shortcut icon" href="/img/30-js.jpg" type="image/x-icon" />
     <title>JS + CSS Clock</title>
     <style>
       html {
@@ -110,7 +110,9 @@
             data.getMinutes(),
             data.getHours(),
           ];
-          document.querySelector(`.${hand}`).style["transform"] = `rotate(${getTime[value] * option}deg)`;
+          document.querySelector(`.${hand}`).style["transform"] = `rotate(${
+            getTime[value] * option
+          }deg)`;
         }, 1000);
       }
       setTime("second-hand", 6, 0);
@@ -119,7 +121,8 @@
 
       // extra code
       const body = document.querySelector("body");
-      const getRandomNum = (min, max) => Math.floor(Math.random() * (max - min) + min);
+      const getRandomNum = (min, max) =>
+        Math.floor(Math.random() * (max - min) + min);
 
       function randomBackground() {
         setInterval(() => {

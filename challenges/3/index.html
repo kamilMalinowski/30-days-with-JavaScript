@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Scoped CSS Variables and JS</title>
-    <link rel="shortcut icon" href="https://kamilmalinowski.github.io/30-day-vanilla-js-coding-challenge/img/30-js.jpg" type="image/x-icon" />
+    <link rel="shortcut icon" href="/img/30-js.jpg" type="image/x-icon" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap");
 
@@ -117,11 +117,18 @@
 
       function switchVariables() {
         const dataSetValue = this.dataset.sizing || "";
-        document.documentElement.style.setProperty(`--${this.name}`, this.value + dataSetValue);
+        document.documentElement.style.setProperty(
+          `--${this.name}`,
+          this.value + dataSetValue
+        );
       }
 
-      inputs.forEach((input) => input.addEventListener("change", switchVariables));
-      inputs.forEach((input) => input.addEventListener("mousemove", switchVariables));
+      inputs.forEach((input) =>
+        input.addEventListener("change", switchVariables)
+      );
+      inputs.forEach((input) =>
+        input.addEventListener("mousemove", switchVariables)
+      );
     </script>
   </body>
 </html>

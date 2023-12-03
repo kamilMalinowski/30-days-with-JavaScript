@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Type Ahead 👀</title>
-    <link rel="shortcut icon" href="https://kamilmalinowski.github.io/30-day-vanilla-js-coding-challenge/img/30-js.jpg" type="image/x-icon" />
+    <link rel="shortcut icon" href="/img/30-js.jpg" type="image/x-icon" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -18,7 +18,8 @@
       const searchInput = document.querySelector(".search");
       const suggestions = document.querySelector(".suggestions");
       const cities = [];
-      const numberWithCommas = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      const numberWithCommas = (x) =>
+        x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       const fetchData = async () => {
         const response = await fetch(
           "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json"
@@ -37,17 +38,27 @@
 
       function displayMatches() {
         const matchArray = findMatches(this.value, cities);
-        const html = matchArray.map((place) => {
+        const html = matchArray
+          .map((place) => {
             const regex = new RegExp(this.value, "gi");
-            const cityName = place.city.replace(regex,`<span class="hl">${this.value}</span>`);
-            const stateName = place.state.replace(regex,`<span class="hl">${this.value}</span>`);
+            const cityName = place.city.replace(
+              regex,
+              `<span class="hl">${this.value}</span>`
+            );
+            const stateName = place.state.replace(
+              regex,
+              `<span class="hl">${this.value}</span>`
+            );
             return `
                     <li>
                       <span class="name">${cityName}, ${stateName}</span>
-                      <span class="population">${numberWithCommas(place.population)}</span>
+                      <span class="population">${numberWithCommas(
+                        place.population
+                      )}</span>
                     </li>
                   `;
-                }).join("");
+          })
+          .join("");
         suggestions.innerHTML = html;
       }
 
